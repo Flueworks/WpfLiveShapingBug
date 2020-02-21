@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridSortBug", "GridSortBug.csproj", "{0F5ED8BE-E1BF-49D4-8610-28234CFFC1CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GridSortBug", "GridSortBug.csproj", "{0F5ED8BE-E1BF-49D4-8610-28234CFFC1CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridSortBug48", "GridSortBug48\GridSortBug48.csproj", "{1D5FB083-17B5-4901-B1F2-5110A94B010E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0F5ED8BE-E1BF-49D4-8610-28234CFFC1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F5ED8BE-E1BF-49D4-8610-28234CFFC1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F5ED8BE-E1BF-49D4-8610-28234CFFC1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D5FB083-17B5-4901-B1F2-5110A94B010E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D5FB083-17B5-4901-B1F2-5110A94B010E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D5FB083-17B5-4901-B1F2-5110A94B010E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D5FB083-17B5-4901-B1F2-5110A94B010E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

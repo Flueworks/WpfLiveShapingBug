@@ -154,7 +154,7 @@ namespace GridSortBug
             }
         }
 
-        public ICommand StopCommand => _stopCommand ??= new RelayCommand(_ => OnStopCommand());
+        public ICommand StopCommand => _stopCommand = _stopCommand ?? new RelayCommand(_ => OnStopCommand());
 
         private void OnStopCommand()
         {

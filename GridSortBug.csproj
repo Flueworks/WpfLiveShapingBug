@@ -6,4 +6,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="GridSortBug48\**" />
+    <EmbeddedResource Remove="GridSortBug48\**" />
+    <None Remove="GridSortBug48\**" />
+    <Page Remove="GridSortBug48\**" />
+  </ItemGroup>
+
 </Project>
