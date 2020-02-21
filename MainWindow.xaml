@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-        <UniformGrid DockPanel.Dock="Top">
+        <UniformGrid DockPanel.Dock="Top" Columns="3">
             <Button DockPanel.Dock="Left" Content="Start" Command="{Binding Path=StartCommand}"/>
             <Button DockPanel.Dock="Right" Content="Stop" Command="{Binding Path=StopCommand}" />
+            <Button DockPanel.Dock="Right" Content="Refresh" Command="{Binding Path=RefreshCommand}" />
         </UniformGrid>
 
         <DataGrid x:Name="DataGrid1" ItemsSource="{Binding CollectionView1}" CanUserSortColumns="False" AutoGenerateColumns="False">
@@ -17,28 +18,41 @@
                 <GroupStyle/>
             </ItemsControl.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=SortOrder}" 
-                                MinWidth="50"
-                                Width="60"
-                                Header="SortOrder"/>
+                <DataGridTemplateColumn MinWidth="50"
+                                    Width="60"
+                                    Header="SortOrder">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding Path=Background}">
+                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding Path=Id}" 
-                                MinWidth="50"
-                                Width="60"
-                                Header="Id"/>
+                                    MinWidth="50"
+                                    Width="60"
+                                    Header="Id"/>
                 <DataGridTextColumn Binding="{Binding Path=Group}" 
                                     MinWidth="50"
                                     Width="60"
                                     Header="Group"/>
-
             </DataGrid.Columns>
         </DataGrid>
 
         <DataGrid x:Name="DataGrid2" ItemsSource="{Binding CollectionView2}" CanUserSortColumns="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=SortOrder}" 
-                                    MinWidth="50"
+                <DataGridTemplateColumn MinWidth="50"
                                     Width="60"
-                                    Header="SortOrder"/>
+                                    Header="SortOrder">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding Path=Background}">
+                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding Path=Id}" 
                                     MinWidth="50"
                                     Width="60"

@@ -63,6 +63,8 @@ namespace GridSortBug
         public static readonly DependencyProperty IsRunningProperty = DependencyProperty.Register("IsRunning",
             typeof(bool), typeof(MainWindow), new FrameworkPropertyMetadata(false));
 
+        private RelayCommand _refreshCommand;
+
         public bool IsRunning
         {
             get => (bool) GetValue(IsRunningProperty);
@@ -76,6 +78,13 @@ namespace GridSortBug
         public ObservableCollection<Item> Items2 { get; }
 
         public ICommand StartCommand => _startCommand ??= new RelayCommand(param => OnStartCommand());
+        public ICommand RefreshCommand => _refreshCommand ??= new RelayCommand(param => OnRefreshCommand());
+
+        private void OnRefreshCommand()
+        {
+            CollectionView1.Refresh();
+            CollectionView2.Refresh();
+        }
 
         private void OnStartCommand()
         {

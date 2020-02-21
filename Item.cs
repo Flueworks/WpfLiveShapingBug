@@ -1,8 +1,38 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 
 namespace GridSortBug
 {
+    internal static class BrushConverter
+    {
+        private static Dictionary<int, Brush> _brushMapping = new Dictionary<int, Brush>()
+        {
+            {0, Brushes.Transparent},
+            {1, new SolidColorBrush(Color.FromRgb(134, 217, 172))},
+            {2, new SolidColorBrush(Color.FromRgb(102, 201, 146))},
+            {3, new SolidColorBrush(Color.FromRgb(65, 182, 117))},
+            {4, new SolidColorBrush(Color.FromRgb(53, 163, 103))},
+            {5, new SolidColorBrush(Color.FromRgb(46, 140, 89))},
+        };
+        static BrushConverter()
+        {
+            foreach (var item in _brushMapping.Values)
+            {
+                item.Freeze();
+            }
+        }
+        public static Brush GetBrushFromSortOrder(int priority)
+        {
+            if(_brushMapping.TryGetValue(priority, out var brush))
+            {
+                return brush;
+            }
+
+            return Brushes.Transparent;
+        }
+    }
     public class Item : INotifyPropertyChanged
     {
         #region Private members
@@ -10,6 +40,8 @@ namespace GridSortBug
         private int _group;
         private int _id;
         private int _sortOrder;
+        private Brush _background;
+
         #endregion
 
         public Item(ItemDto source)
@@ -61,6 +93,20 @@ namespace GridSortBug
             SortOrder = dto.SortOrder;
             Group = dto.Group;
             Thread = dto.Thread;
+            Background = BrushConverter.GetBrushFromSortOrder(SortOrder);
+        }
+
+        public Brush Background
+        {
+            get => _background;
+            set
+            {
+                if(_background != value)
+                {
+                    _background = value;
+                    OnPropertyChanged(nameof(Background));
+                }
+            }
         }
 
         public string Thread { get; set; }
