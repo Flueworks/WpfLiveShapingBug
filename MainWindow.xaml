@@ -23,8 +23,8 @@
                                     Header="SortOrder">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Border Background="{Binding Path=Background}">
-                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" />
+                            <Border Background="{Binding Path=Background}" Width="{Binding Path=Width}" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" />
                             </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -47,8 +47,8 @@
                                     Header="SortOrder">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Border Background="{Binding Path=Background}">
-                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" />
+                            <Border Background="{Binding Path=Background}" Width="{Binding Path=Width}" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Path=SortOrder}" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" />
                             </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

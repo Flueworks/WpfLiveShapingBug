@@ -9,12 +9,10 @@ namespace GridSortBug
     {
         private static Dictionary<int, Brush> _brushMapping = new Dictionary<int, Brush>()
         {
-            {0, Brushes.Transparent},
-            {1, new SolidColorBrush(Color.FromRgb(134, 217, 172))},
-            {2, new SolidColorBrush(Color.FromRgb(102, 201, 146))},
-            {3, new SolidColorBrush(Color.FromRgb(65, 182, 117))},
-            {4, new SolidColorBrush(Color.FromRgb(53, 163, 103))},
-            {5, new SolidColorBrush(Color.FromRgb(46, 140, 89))},
+            {0, Brushes.Black},
+            {1, Brushes.DarkRed},
+            {2, Brushes.DarkGreen},
+            {3, Brushes.DarkBlue}
         };
         static BrushConverter()
         {
@@ -23,9 +21,9 @@ namespace GridSortBug
                 item.Freeze();
             }
         }
-        public static Brush GetBrushFromSortOrder(int priority)
+        public static Brush GetBackgroundForGroup(int @group)
         {
-            if(_brushMapping.TryGetValue(priority, out var brush))
+            if(_brushMapping.TryGetValue(@group, out var brush))
             {
                 return brush;
             }
@@ -41,6 +39,7 @@ namespace GridSortBug
         private int _id;
         private int _sortOrder;
         private Brush _background;
+        private int _width;
 
         #endregion
 
@@ -93,7 +92,21 @@ namespace GridSortBug
             SortOrder = dto.SortOrder;
             Group = dto.Group;
             Thread = dto.Thread;
-            Background = BrushConverter.GetBrushFromSortOrder(SortOrder);
+            Background = BrushConverter.GetBackgroundForGroup(Group);
+            Width = SortOrder * 10;
+        }
+
+        public int Width
+        {
+            get => _width;
+            set
+            {
+                if (_width != value)
+                {
+                    _width = value;
+                    OnPropertyChanged(nameof(Width));
+                }
+            }
         }
 
         public Brush Background
